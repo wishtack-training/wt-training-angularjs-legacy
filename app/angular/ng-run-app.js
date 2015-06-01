@@ -7,7 +7,7 @@
 
 (function () {
 
-    angular.module('app').run(function () {
+    angular.module('wishlist').run(function () {
 
     });
 

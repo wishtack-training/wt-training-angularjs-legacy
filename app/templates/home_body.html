@@ -1,8 +1,23 @@
-<body>
+<body ng-app="wishlist">
 
-<h1>Welcome to Djangular!</h1>
+{% verbatim %}
+<div ng-controller="ControllerUser">
 
-<h2>Enjoy the power of the M.A.D. stack starring MongoDB / AngularJS / Django.</h2>
+    <div>
+
+        <button ng-click="switchUser(0)">User 1</button>
+
+        <button ng-click="switchUser(1)">User 2</button>
+
+        <span ng-bind="user.firstName"></span>
+        <span ng-bind="user.lastName"></span>
+        <span>:</span>
+        <span ng-bind="user.email"></span>
+
+    </div>
+
+</div>
+{% endverbatim %}
 
 </body>
 

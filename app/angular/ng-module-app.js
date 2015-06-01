@@ -8,6 +8,6 @@
 
 (function () {
 
-    angular.module('app', []);
+    angular.module('wishlist', []);
 
 })();
