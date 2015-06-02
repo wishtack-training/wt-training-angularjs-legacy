@@ -53,13 +53,32 @@
 
             /**
              * Add wish.
+             * @param args{user: User, wish: Wish}
              */
             $scope.addWish = function addWish(args) {
 
                 var user = args.user;
                 var wish = args.wish;
 
-                user.all('wishes').post(wish);
+                user.all('wishes').post(wish).then(function (wish) {
+                    args.user.wishList = args.user.wishList || [];
+                    args.user.wishList.push(wish);
+                });
+
+            };
+
+            /**
+             * Remove wish.
+             * @param args{user: User, wish: Wish}
+             */
+            $scope.removeWish = function removeWish(args) {
+
+                var user = args.user;
+                var wish = args.wish;
+
+                wish.remove().then(function () {
+                    user.wishList.splice(_.indexOf(user.wishList, wish), 1);
+                });
 
             };
 
@@ -69,7 +88,14 @@
             User.getList().then(function (userList) {
 
                 if (userList.length > 0) {
+
                     $scope.user = userList[0];
+
+                    /* Update user wishes. */
+                    $scope.user.all('wishes').getList().then(function (wishList) {
+                        $scope.user.wishList = wishList;
+                    });
+
                 }
 
                 $scope.isViewReady = true;
