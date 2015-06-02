@@ -47,6 +47,7 @@
 
                 args.user.remove().then(function () {
                     $scope.user = {};
+                    $scope.wishList = null;
                 });
 
             };

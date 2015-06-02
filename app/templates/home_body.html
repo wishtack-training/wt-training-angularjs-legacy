@@ -75,11 +75,13 @@
                 <tr>
                     <th>Creation Date</th>
                     <th>Title</th>
+                    <th>Price</th>
                     <th>Actions</th>
                 </tr>
                 <tr ng-repeat="wish in user.wishList | orderBy:'-creationDateTime' track by wish.id">
-                    <td ng-bind="wish.creationDateTime"></td>
-                    <td ng-bind="wish.title"></td>
+                    <td ng-bind="::wish.creationDateTime | date:'medium'"></td>
+                    <td ng-bind="::wish.title"></td>
+                    <td ng-bind="::wish.price | wlPrice"></td>
                     <td>
                         <button
                                 ng-click="removeWish({user: user, wish: wish})"
