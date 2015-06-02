@@ -1,53 +1,73 @@
 <body ng-app="wishlist">
 
 {% verbatim %}
-<div ng-controller="ControllerUser">
+<div
+        ng-controller="ControllerUser">
 
-    <form
-            name="formUserEdit"
-            ng-init="formUser.firstName = 'John'"
-            ng-submit="saveUser({user: formUser})">
+    <div ng-switch="isViewReady">
 
-        <input
-                ng-model="formUser.firstName"
-                required
-                type="text">
+        <div ng-switch-when="true">
 
-        <input
-                ng-model="formUser.lastName"
-                required
-                type="text">
+            <form
+                    name="formUserEdit"
+                    ng-submit="saveUser({user: formUser})">
 
-        <input
-                ng-model="formUser.email"
-                required
-                type="email">
+                <input
+                        ng-model="formUser.firstName"
+                        required
+                        type="text">
 
-        <button
-                ng-disabled="!formUserEdit.$valid"
-                type="submit">Save</button>
+                <input
+                        ng-model="formUser.lastName"
+                        required
+                        type="text">
 
-    </form>
+                <input
+                        ng-model="formUser.email"
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        required
+                        type="email">
 
-    <div>
+                <button
+                        ng-disabled="!formUserEdit.$valid"
+                        type="submit">Save</button>
 
-        <h2>Temporary:</h2>
+            </form>
 
-        <span ng-bind="formUser.firstName"></span>
-        <span ng-bind="formUser.lastName"></span>
-        <span>:</span>
-        <span ng-bind="formUser.email"></span>
+            <h2>Temporary:</h2>
 
-    </div>
+            <div ng-show="formUser.firstName || formUser.lastName || formUser.email">
 
-    <div>
+                <span ng-bind="formUser.firstName"></span>
+                <span ng-bind="formUser.lastName"></span>
+                <span>:</span>
+                <span ng-bind="formUser.email"></span>
 
-        <h2>Permanent:</h2>
+            </div>
 
-        <span ng-bind="user.firstName"></span>
-        <span ng-bind="user.lastName"></span>
-        <span>:</span>
-        <span ng-bind="user.email"></span>
+            <h2>Permanent:</h2>
+
+            <div ng-show="user">
+
+                <span ng-bind="user.id"></span>
+                <span>-</span>
+                <span ng-bind="user.firstName"></span>
+                <span ng-bind="user.lastName"></span>
+                <span>:</span>
+                <span ng-bind="user.email"></span>
+
+                <button
+                        ng-show="user.id"
+                        ng-click="removeUser({user: user})"
+                        type="button">Remove</button>
+
+            </div>
+
+        </div>
+
+        <div ng-switch-default>
+            Loading...
+        </div>
 
     </div>
 
