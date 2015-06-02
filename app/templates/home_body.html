@@ -10,21 +10,24 @@
 
             <form
                     name="formUserEdit"
-                    ng-submit="saveUser({user: formUser})">
+                    ng-submit="saveUser({user: user})">
 
                 <input
-                        ng-model="formUser.firstName"
+                        ng-model="user.firstName"
+                        placeholder="First name"
                         required
                         type="text">
 
                 <input
-                        ng-model="formUser.lastName"
+                        ng-model="user.lastName"
+                        placeholder="Last name"
                         required
                         type="text">
 
                 <input
-                        ng-model="formUser.email"
+                        ng-model="user.email"
                         pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        placeholder="Email"
                         required
                         type="email">
 
@@ -32,36 +35,41 @@
                         ng-disabled="!formUserEdit.$valid"
                         type="submit">Save</button>
 
-            </form>
-
-            <h2>Temporary:</h2>
-
-            <div ng-show="formUser.firstName || formUser.lastName || formUser.email">
-
-                <span ng-bind="formUser.firstName"></span>
-                <span ng-bind="formUser.lastName"></span>
-                <span>:</span>
-                <span ng-bind="formUser.email"></span>
-
-            </div>
-
-            <h2>Permanent:</h2>
-
-            <div ng-show="user">
-
-                <span ng-bind="user.id"></span>
-                <span>-</span>
-                <span ng-bind="user.firstName"></span>
-                <span ng-bind="user.lastName"></span>
-                <span>:</span>
-                <span ng-bind="user.email"></span>
-
                 <button
                         ng-show="user.id"
                         ng-click="removeUser({user: user})"
                         type="button">Remove</button>
 
-            </div>
+            </form>
+
+            <form
+                    name="formWishEdit"
+                    ng-init="defaultCurrency = 'EUR'; wish.price.currency = defaultCurrency"
+                    ng-show="user.id"
+                    ng-submit="addWish({user: user, wish: wish}); wish = {price: {currency: defaultCurrency}};">
+
+                <input
+                        ng-model="wish.title"
+                        required
+                        type="text">
+
+                <input
+                        ng-model="wish.price"
+                        placeholder="amount"
+                        step="any"
+                        type="number"
+                        wl-price-amount>
+
+                <select ng-model="wish.price.currency">
+                    <option value="EUR">€</option>
+                    <option value="USD">$</option>
+                </select>
+
+                <button
+                        ng-disabled="!formWishEdit.$valid"
+                        type="submit">Add Wish</button>
+
+            </form>
 
         </div>
 

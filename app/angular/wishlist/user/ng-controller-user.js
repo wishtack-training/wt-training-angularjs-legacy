@@ -16,12 +16,11 @@
 
             /* Wait for resource before showing anything. */
             $scope.isViewReady = false;
-            $scope.formUser = {};
-            $scope.user = null;
+            $scope.user = {};
 
             /**
              * Send user to API.
-             * @param args{user:User}
+             * @param args{form: Form, user: User}
              */
             $scope.saveUser = function saveUser(args) {
 
@@ -37,7 +36,6 @@
 
                 promise.then(function (user) {
                     $scope.user = user;
-                    $scope.formUser = WishlistRestangular.copy($scope.user);
                 });
 
             };
@@ -48,9 +46,20 @@
             $scope.removeUser = function removeUser(args) {
 
                 args.user.remove().then(function () {
-                    $scope.user = null;
-                    $scope.formUser = {};
+                    $scope.user = {};
                 });
+
+            };
+
+            /**
+             * Add wish.
+             */
+            $scope.addWish = function addWish(args) {
+
+                var user = args.user;
+                var wish = args.wish;
+
+                user.all('wishes').post(wish);
 
             };
 
@@ -61,7 +70,6 @@
 
                 if (userList.length > 0) {
                     $scope.user = userList[0];
-                    $scope.formUser = WishlistRestangular.copy($scope.user);
                 }
 
                 $scope.isViewReady = true;
