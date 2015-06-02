@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.7.0
+    - Wish date & price filters.
+
 ### 0.6.0
     - Wishes table.
 
