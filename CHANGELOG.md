@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.5.0
+    - Wish form.
+
 ### 0.4.1
     - User api interaction with restangular.
 
