@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.8.0
+    - Wish preview directive.
+
 ### 0.7.0
     - Wish date & price filters.
 
