@@ -7,11 +7,12 @@
 
 (function () {
 
-    angular.module('wishlist').controller('ControllerUser',
+    angular.module('wishlist.user').controller('ControllerUser',
         function ($http,
-                  $scope) {
+                  $scope,
+                  WishlistRestangular) {
 
-            var userListUrl = '/api/v1/users/';
+            var User = WishlistRestangular.all('users');
 
             /* Wait for resource before showing anything. */
             $scope.isViewReady = false;
@@ -24,18 +25,19 @@
              */
             $scope.saveUser = function saveUser(args) {
 
-                var method = 'post';
-                var userResourceUrl = userListUrl;
+                var promise = null;
                 var user = args.user;
 
-                if ($scope.user != null) {
-                    userResourceUrl += $scope.user.id + '/';
-                    method = 'patch';
+                if (user.save != null) {
+                    promise = user.save();
+                }
+                else {
+                    promise = User.post(user);
                 }
 
-                $http[method](userResourceUrl, user).success(function (data) {
-                    $scope.user = data;
-                    $scope.formUser = angular.copy($scope.user);
+                promise.then(function (user) {
+                    $scope.user = user;
+                    $scope.formUser = WishlistRestangular.copy($scope.user);
                 });
 
             };
@@ -45,11 +47,9 @@
              */
             $scope.removeUser = function removeUser(args) {
 
-                var user = args.user;
-
-                $http.delete(userListUrl + user.id + '/').success(function () {
+                args.user.remove().then(function () {
                     $scope.user = null;
-                    $scope.formUser = null;
+                    $scope.formUser = {};
                 });
 
             };
@@ -57,13 +57,11 @@
             /**
              * Retrieve users from API.
              */
-            $http.get(userListUrl).success(function (data) {
-
-                var userList = data.objects;
+            User.getList().then(function (userList) {
 
                 if (userList.length > 0) {
                     $scope.user = userList[0];
-                    $scope.formUser = angular.copy($scope.user);
+                    $scope.formUser = WishlistRestangular.copy($scope.user);
                 }
 
                 $scope.isViewReady = true;

@@ -5,9 +5,10 @@
  * $Id: $
  */
 
-
 (function () {
 
-    angular.module('wishlist', []);
+    angular.module('wishlist.user', [
+        'restangular'
+    ]);
 
 })();
