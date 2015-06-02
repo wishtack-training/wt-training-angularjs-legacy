@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.6.0
+    - Wishes table.
+
 ### 0.5.0
     - Wish form.
 
