@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.4.1
+    - User api interaction with restangular.
+
 ### 0.4.0
     - User api interaction.
 
