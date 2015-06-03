@@ -32,40 +32,7 @@
 
         </form>
 
-        <form
-                name="formWishEdit"
-                ng-init="defaultCurrency = 'EUR'; wish.price.currency = defaultCurrency"
-                ng-show="user.id"
-                ng-submit="addWish({user: user, wish: wish}); wish = {price: {currency: defaultCurrency}};">
-
-            <input
-                    ng-model="wish.title"
-                    required
-                    type="text">
-
-            <input
-                    ng-model="wish.price"
-                    placeholder="amount"
-                    step="any"
-                    type="number"
-                    wl-price-amount>
-
-            <select ng-model="wish.price.currency">
-                <option value="EUR">€</option>
-                <option value="USD">$</option>
-            </select>
-
-            <button
-                    ng-disabled="!formWishEdit.$valid"
-                    type="submit">Add Wish</button>
-
-        </form>
-
-
-        <wl-wish-preview
-                ng-repeat="wish in user.wishList | orderBy:'-creationDateTime' track by wish.id"
-                wl-user="::user"
-                wl-wish="::wish"></wl-wish-preview>
+        <ui-view></ui-view>
 
     </div>
 
