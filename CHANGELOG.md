@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.12.0
+    - Karma tests.
+
 ### 0.11.0
     - Routing nested views and views reuse.
 
