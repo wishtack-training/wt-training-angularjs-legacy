@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.13.0
+    - Protractor tests.
+
 ### 0.12.0
     - Karma tests.
 
