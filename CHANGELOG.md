@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.0
+    - Routing nested views and views reuse.
+
 ### 0.10.0
     - User list view.
 
