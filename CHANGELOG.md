@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.0
+    - User list view.
+
 ### 0.9.0
     - Routing.
 
