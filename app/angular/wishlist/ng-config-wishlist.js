@@ -24,6 +24,7 @@
         function ($locationProvider,
                   $stateProvider,
                   $urlRouterProvider,
+                  configUserProvider,
                   configWishlistProvider) {
 
             var assetsAngularUrl = configWishlistProvider.assetsAngularUrl;
@@ -32,14 +33,17 @@
             $locationProvider.html5Mode(true);
 
             /* Default route. */
-            $urlRouterProvider.otherwise('/user');
+            $urlRouterProvider.otherwise('/users');
 
-            $stateProvider
-                .state('userList', {
-                    controller: 'ControllerUser',
-                    url: '/user',
-                    templateUrl: assetsAngularUrl + 'wishlist/user/ng_user.html'
-                });
+            angular.forEach(configUserProvider.stateList, function (state) {
+
+                /* Fix template URL path. */
+                state.templateUrl = assetsAngularUrl + state.templateUrl;
+
+                /* Declare state. */
+                $stateProvider.state(state.name, state);
+
+            });
 
         }
     );

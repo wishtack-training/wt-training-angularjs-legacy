@@ -5,7 +5,7 @@
 
         <form
                 name="formUserEdit"
-                ng-submit="saveUser({user: user})">
+                ng-submit="user.save()">
 
             <input
                     ng-model="user.firstName"
@@ -29,11 +29,6 @@
             <button
                     ng-disabled="!formUserEdit.$valid"
                     type="submit">Save</button>
-
-            <button
-                    ng-show="user.id"
-                    ng-click="removeUser({user: user})"
-                    type="button">Remove</button>
 
         </form>
 

@@ -1,0 +1,45 @@
+<form
+        name="formUserEdit"
+        ng-submit="addUser({user: user}); user = null;">
+
+    <input
+            ng-model="user.firstName"
+            placeholder="First name"
+            required
+            type="text">
+
+    <input
+            ng-model="user.lastName"
+            placeholder="Last name"
+            required
+            type="text">
+
+    <input
+            ng-model="user.email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            placeholder="Email"
+            required
+            type="email">
+
+    <button
+            ng-disabled="!formUserEdit.$valid"
+            type="submit">Create</button>
+
+</form>
+
+<div ng-repeat="user in userList | orderBy:'-id' track by user.id">
+
+    <span ng-bind="user.id"></span>
+    <span>-</span>
+    <span ng-bind="user.firstName"></span>
+    <span ng-bind="user.lastName"></span>
+    <span ng-bind="user.email"></span>
+
+    <button
+            ui-sref="userDetail({userId: user.id})">Detail</button>
+
+    <button
+            ng-click="removeUser({user: user})"
+            type="button">Remove</button>
+
+</div>
