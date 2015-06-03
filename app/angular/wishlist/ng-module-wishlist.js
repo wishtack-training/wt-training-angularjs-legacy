@@ -9,6 +9,7 @@
 (function () {
 
     angular.module('wishlist', [
+        'ui.router',
         'wishlist.user'
     ]);
 

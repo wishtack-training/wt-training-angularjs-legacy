@@ -20,4 +20,28 @@
 
     });
 
+    angular.module('wishlist').config(
+        function ($locationProvider,
+                  $stateProvider,
+                  $urlRouterProvider,
+                  configWishlistProvider) {
+
+            var assetsAngularUrl = configWishlistProvider.assetsAngularUrl;
+
+            /* Enable Html5 mode. */
+            $locationProvider.html5Mode(true);
+
+            /* Default route. */
+            $urlRouterProvider.otherwise('/user');
+
+            $stateProvider
+                .state('userList', {
+                    controller: 'ControllerUser',
+                    url: '/user',
+                    templateUrl: assetsAngularUrl + 'wishlist/user/ng_user.html'
+                });
+
+        }
+    );
+
 })();
