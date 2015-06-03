@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.0
+    - Routing.
+
 ### 0.8.0
     - Wish preview directive.
 
