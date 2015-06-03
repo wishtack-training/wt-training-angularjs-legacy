@@ -69,21 +69,6 @@
             };
 
             /**
-             * Remove wish.
-             * @param args{user: User, wish: Wish}
-             */
-            $scope.removeWish = function removeWish(args) {
-
-                var user = args.user;
-                var wish = args.wish;
-
-                wish.remove().then(function () {
-                    user.wishList.splice(_.indexOf(user.wishList, wish), 1);
-                });
-
-            };
-
-            /**
              * Retrieve users from API.
              */
             User.getList().then(function (userList) {

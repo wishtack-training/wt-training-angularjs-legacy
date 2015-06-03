@@ -71,24 +71,11 @@
 
             </form>
 
-            <table style="width: 100%">
-                <tr>
-                    <th>Creation Date</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-                <tr ng-repeat="wish in user.wishList | orderBy:'-creationDateTime' track by wish.id">
-                    <td ng-bind="::wish.creationDateTime | date:'medium'"></td>
-                    <td ng-bind="::wish.title"></td>
-                    <td ng-bind="::wish.price | wlPrice"></td>
-                    <td>
-                        <button
-                                ng-click="removeWish({user: user, wish: wish})"
-                                type="button">Delete</button>
-                    </td>
-                </tr>
-            </table>
+
+            <wl-wish-preview
+                    ng-repeat="wish in user.wishList | orderBy:'-creationDateTime' track by wish.id"
+                    wl-user="::user"
+                    wl-wish="::wish"></wl-wish-preview>
 
         </div>
 

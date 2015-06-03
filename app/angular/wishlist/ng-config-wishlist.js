@@ -11,6 +11,9 @@
 
         this.apiRootUrl = '/api/v1/';
 
+        this.assetsUrl = '/assets/';
+        this.assetsAngularUrl = this.assetsUrl + 'angular/';
+
         this.$get = function $get() {
             return this;
         };

@@ -1,0 +1,12 @@
+
+<div style="text-align: center">
+
+    <h2 ng-bind="::wish.title"></h2>
+
+    <div ng-bind="::wish.price | wlPrice"></div>
+
+    <div ng-bind="::wish.creationDateTime | date:'medium'"></div>
+
+    <button ng-click="removeWish({user: user, wish: wish})">Remove</button>
+
+</div>

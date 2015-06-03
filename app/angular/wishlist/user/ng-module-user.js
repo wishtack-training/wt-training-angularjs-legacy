@@ -8,7 +8,8 @@
 (function () {
 
     angular.module('wishlist.user', [
-        'restangular'
+        'restangular',
+        'wishlist.user.wish'
     ]);
 
 })();
