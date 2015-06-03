@@ -24,7 +24,10 @@ module.exports = function(config) {
         files: [
 
             /* Bower components. */
+            appBowerComponentsPath + 'underscore/underscore.js',
             appBowerComponentsPath + 'angular/angular.js',
+            appBowerComponentsPath + 'angular-ui-router/release/angular-ui-router.js',
+            appBowerComponentsPath + 'restangular/src/restangular.js',
 
             /* Angular mocks. */
             appBowerComponentsPath + 'angular-mocks/angular-mocks.js',
