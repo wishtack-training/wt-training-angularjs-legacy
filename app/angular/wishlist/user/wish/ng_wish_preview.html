@@ -7,6 +7,8 @@
 
     <div ng-bind="::wish.creationDateTime | date:'medium'"></div>
 
-    <button ng-click="removeWish({user: user, wish: wish})">Remove</button>
+    <md-button
+            class="md-raised md-warn"
+            ng-click="removeWish({user: user, wish: wish})">Remove</md-button>
 
 </div>

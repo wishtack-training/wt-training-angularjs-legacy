@@ -1,48 +1,71 @@
 <form
+        layout="row"
+        layout-align="space-around center"
         name="formUserEdit"
         ng-submit="addUser({user: user}); user = null;">
 
-    <input
-            ng-model="user.firstName"
-            placeholder="First name"
-            required
-            type="text">
+    <md-input-container>
+        <label>First name</label>
+        <input
+                ng-model="user.firstName"
+                required
+                type="text"/>
+    </md-input-container>
 
-    <input
-            ng-model="user.lastName"
-            placeholder="Last name"
-            required
-            type="text">
+    <md-input-container>
+        <label>Last name</label>
+        <input
+                ng-model="user.lastName"
+                required
+                type="text"/>
+    </md-input-container>
 
-    <input
-            ng-model="user.email"
-            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            placeholder="Email"
-            required
-            type="email">
+    <md-input-container>
+        <label>Email</label>
+        <input
+                ng-model="user.email"
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                required
+                type="text"/>
+    </md-input-container>
 
-    <button
+    <md-button
+            class="md-primary md-raised"
             ng-disabled="!formUserEdit.$valid"
-            type="submit">Create</button>
+            type="submit">Create</md-button>
 
 </form>
 
-<div ng-repeat="user in userList | orderBy:'-id' track by user.id">
+<md-list>
 
-    <span ng-bind="user.id"></span>
-    <span>-</span>
-    <span ng-bind="user.firstName"></span>
-    <span ng-bind="user.lastName"></span>
-    <span ng-bind="user.email"></span>
+    <md-list-item
+            class="wt-padding-vertical-20"
+            layout="row"
+            layout-align="space-between center"
+            ng-class="{'wt-background-color-grey': $odd}"
+            ng-repeat="user in userList | orderBy:'-id' track by user.id">
 
-    <button
-            ui-sref="userDetail({userId: user.id})">Detail</button>
+        <div
+                layout="row"
+                layout-align="start"
+                ng-bind="::user.firstName + ' ' + user.lastName + ' (' + user.email + ')'"></div>
 
-    <button
-            ui-sref="wishList({userId: user.id})">Wishes</button>
+        <div layout="row">
 
-    <button
-            ng-click="removeUser({user: user})"
-            type="button">Remove</button>
+            <md-button
+                    class="md-primary"
+                    ui-sref="userDetail({userId: user.id})">Detail</md-button>
 
-</div>
+            <md-button
+                    class="md-primary"
+                    ui-sref="wishList({userId: user.id})">Wishes</md-button>
+
+            <md-button
+                    class="md-warn"
+                    ng-click="removeUser({user: user})">Remove</md-button>
+
+        </div>
+
+    </md-list-item>
+
+</md-list>

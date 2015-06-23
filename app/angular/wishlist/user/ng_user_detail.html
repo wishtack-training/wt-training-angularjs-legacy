@@ -4,31 +4,40 @@
     <div ng-switch-when="true">
 
         <form
+                layout="row"
+                layout-align="space-around center"
                 name="formUserEdit"
                 ng-submit="user.save()">
 
-            <input
-                    ng-model="user.firstName"
-                    placeholder="First name"
-                    required
-                    type="text">
+            <md-input-container>
+                <label>First name</label>
+                <input
+                        ng-model="user.firstName"
+                        required
+                        type="text"/>
+            </md-input-container>
 
-            <input
-                    ng-model="user.lastName"
-                    placeholder="Last name"
-                    required
-                    type="text">
+            <md-input-container>
+                <label>Last name</label>
+                <input
+                        ng-model="user.lastName"
+                        required
+                        type="text"/>
+            </md-input-container>
 
-            <input
-                    ng-model="user.email"
-                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    placeholder="Email"
-                    required
-                    type="email">
+            <md-input-container>
+                <label>Email</label>
+                <input
+                        ng-model="user.email"
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        required
+                        type="text"/>
+            </md-input-container>
 
-            <button
+            <md-button
+                    class="md-primary md-raised"
                     ng-disabled="!formUserEdit.$valid"
-                    type="submit">Save</button>
+                    type="submit">Save</md-button>
 
         </form>
 

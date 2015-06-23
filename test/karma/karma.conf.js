@@ -26,6 +26,9 @@ module.exports = function(config) {
             /* Bower components. */
             appBowerComponentsPath + 'underscore/underscore.js',
             appBowerComponentsPath + 'angular/angular.js',
+            appBowerComponentsPath + 'angular-animate/angular-animate.js',
+            appBowerComponentsPath + 'angular-aria/angular-aria.js',
+            appBowerComponentsPath + 'angular-material/angular-material.js',
             appBowerComponentsPath + 'angular-ui-router/release/angular-ui-router.js',
             appBowerComponentsPath + 'restangular/src/restangular.js',
 
