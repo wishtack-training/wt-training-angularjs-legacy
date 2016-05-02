@@ -13,8 +13,9 @@ module.exports = function watchFactory(args) {
     var config = require('../../config')();
     var plugins = require('../../plugins');
 
-    var reload = function reload() {
+    var reload = function reload(done) {
         plugins.livereload.reload('/');
+        done();
     };
 
     var buildAppAndReload = gulp.series(
